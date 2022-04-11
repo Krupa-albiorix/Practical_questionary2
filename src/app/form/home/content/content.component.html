@@ -1,0 +1,42 @@
+<div class="view-port">
+    <div class="container">
+        <div class="title">Add Content</div>
+        <div class="content">
+            <mat-card style="background-color:lightgray ;">&nbsp;
+                <form [formGroup]="contentForm">
+
+                    <div class="user-details">
+
+                        <mat-card appearance="fill">
+                            <mat-form-field class="form-details">
+                                <mat-label>Choose Category</mat-label>
+                                <mat-select name="category" multiple formControlName="category">
+                                    <!-- <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option> -->
+                                </mat-select>
+                                    <mat-error *ngIf="contentForm.controls['category'].hasError('required')">
+                                        Hobbies field is <strong>required</strong>...
+                                    </mat-error>
+                            </mat-form-field><pre></pre>
+                        </mat-card>&nbsp;
+
+                        <mat-card appearance="fill">
+                            <mat-form-field class="form-details">
+                                <mat-label>Content</mat-label>
+                                    <input matInput name="content" type="text" formControlName="content">
+                                        <mat-error *ngIf="contentForm.controls['content'].hasError('required')">
+                                            Content is <strong>required</strong>...
+                                        </mat-error>
+                            </mat-form-field>
+                        </mat-card>
+
+                    </div>
+
+                    <div class="example-button-row">
+                        <button mat-raised-button type="submit" (click)="onsubmit()">Submit</button>
+                    </div>
+
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

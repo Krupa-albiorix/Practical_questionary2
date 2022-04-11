@@ -1,0 +1,21 @@
+<div class="view-port">
+    <div class="container">
+        <div class="title">Home</div>
+            <div class="content">
+
+                    <div class="example-button-row">
+                        <button mat-raised-button [routerLink]="['/category']">Add category</button>&nbsp;
+                        <button mat-raised-button [routerLink]="['/content']">Add content</button>
+                    </div>
+
+                    <div class="form-details">
+                        <!-- <ul> -->
+                            <li *ngFor="let hero of HEROES">
+                                <a [routerLink]="['/categorydetails']">{{ hero.name }}</a>
+                            </li>
+                        <!-- </ul> -->
+                    </div>
+
+            </div>
+    </div>
+</div>

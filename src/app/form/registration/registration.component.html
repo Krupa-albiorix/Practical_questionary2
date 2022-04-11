@@ -1,1 +1,87 @@
-<p>registration works!</p>
+<div class="view-port">
+    <div class="container">
+        <div class="title">Registration Form</div>
+        <div class="content">
+            <mat-card style="background-color:lightgray ;">
+            <form [formGroup]="registrationForm">
+
+                <div class="user-details">
+                    
+                    <mat-card appearance="fill">
+                        <mat-form-field class="form-details">
+                            <mat-label>Enter Full Name</mat-label>
+                                <input matInput name="name" type="text" formControlName="name">
+                                    <mat-error *ngIf="registrationForm.controls['name'].hasError('required')">
+                                        The Name field is <strong>required</strong>...
+                                    </mat-error>
+                        </mat-form-field>
+                    </mat-card>&nbsp;
+
+                    <mat-card appearance="fill">
+                        <mat-form-field class="form-details">
+                            <mat-label>Date Of Birth</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="date">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="registrationForm.controls['date'].hasError('required')">
+                                Date field is <strong>required</strong>...
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-card>&nbsp;
+
+                    <mat-card appearance="fill">
+                        <section class="form-details">
+                            <mat-label>Languages known</mat-label><br><br>
+                            <p><mat-checkbox formControlName="english">English</mat-checkbox></p>
+                            <p><mat-checkbox formControlName="hindi">Hindi</mat-checkbox></p>
+                            <p><mat-checkbox formControlName="gujarati">Gujarati</mat-checkbox></p>
+                        </section>
+                        
+                    </mat-card>&nbsp;
+
+                    <mat-card appearance="fill">
+                        <div class="form-details">
+                            <mat-label>Gender</mat-label><br><br>
+                                <mat-radio-group class="gender" value="1" formControlName="gender">
+                                        <mat-radio-button value="0">Male</mat-radio-button>&nbsp;
+                                        <mat-radio-button value="1">Female</mat-radio-button>
+                                </mat-radio-group>
+                        </div>
+                    </mat-card>&nbsp;
+
+                    <mat-card appearance="fill">
+                        <mat-form-field class="form-details">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" placeholder="Ex. pat@example.com" formControlName="email">
+                                <mat-error *ngIf="registrationForm.controls['email'].hasError('email')">
+                                    Please enter a valid email address
+                                </mat-error>
+                                <mat-error *ngIf="registrationForm.controls['email'].hasError('required')">
+                                    Email is <strong>required</strong>
+                                </mat-error>
+                        </mat-form-field>
+                    </mat-card>&nbsp;
+
+                    <mat-card appearance="fill">
+                        <mat-form-field class="form-details">
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password" name="password" formControlName="password">
+                                <mat-error *ngIf="registrationForm.controls['password'].hasError('required')">
+                                    Password is <strong>required</strong>
+                                </mat-error>
+                                <mat-error *ngIf="registrationForm.controls['password'].hasError('minLength')">
+                                    Please enter a strong password
+                                </mat-error>
+                        </mat-form-field>
+                    </mat-card>&nbsp;
+
+                    <div class="example-button-row">
+                        <button mat-raised-button type="submit" (click)="onSubmit()">Submit</button>
+                    </div>
+
+                </div>
+            </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

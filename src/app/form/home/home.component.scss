@@ -30,7 +30,27 @@
 }
 
 .form-details {
+    padding-left: 20px;
+    font-size: 20px;
     position: relative;
     margin-bottom: 10px;
     width: 100%;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+button {
+    width: auto;
+}
+
+.example-button-row {
+    padding-left: 1000px;
+    display: flex;
+    max-width: 1500px;
+    width: 100%;
+    padding-top: 10px;
+    border-radius: 5px;
+    display: table-cell;
 }

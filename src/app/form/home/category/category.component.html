@@ -1,0 +1,30 @@
+<div class="view-port">
+    <div class="container">
+        <div class="title">Add Category</div>
+        <div class="content">
+            <mat-card style="background-color:lightgray ;">
+                <form [formGroup]="categoryForm">
+
+                    <div class="user-details">
+
+                        <mat-card appearance="fill">
+                            <mat-form-field class="form-details">
+                                <mat-label>Title</mat-label>
+                                    <input matInput name="title" type="text" formControlName="title">
+                                        <mat-error *ngIf="categoryForm.controls['title'].hasError('required')">
+                                            Title is <strong>required</strong>...
+                                        </mat-error>
+                            </mat-form-field>
+                        </mat-card>&nbsp;
+
+                    </div>
+
+                    <div class="example-button-row">
+                        <button mat-raised-button type="submit" (click)="onsubmit()">Submit</button>
+                    </div>
+
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>
