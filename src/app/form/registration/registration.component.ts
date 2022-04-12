@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,9 +12,8 @@ export class RegistrationComponent implements OnInit {
 
   registrationForm!: any;
   user!: any;
-  // FORM_CONSTANT = 'user';
 
-  constructor(private formBuilder: FormBuilder, private route1: Router,) { }
+  constructor(private formBuilder: FormBuilder, private route1: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.createRegistrationForm();
@@ -22,46 +22,36 @@ export class RegistrationComponent implements OnInit {
   createRegistrationForm() {
     this.registrationForm = this.formBuilder.group({
       name: ['', Validators.required],
-      date: ['', Validators.required],
-      english: false,
-      hindi: false,
-      gujarati: false,
-      gender: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      salary: ['', Validators.required],
+      age : ['', Validators.required]
+      // date: ['', Validators.required],
+      // english: false,
+      // hindi: false,
+      // gujarati: false,
+      // gender: ['', Validators.required],
+      // email: ['', [Validators.required, Validators.email]],
+      // password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
-  // onSubmit() {
-  //   console.log(this.registrationForm)
-  //   if (this.registrationForm.valid) {
-  //     if (localStorage.getItem(this.FORM_CONSTANT)) {
-  //       localStorage.removeItem(this.FORM_CONSTANT);
-  //     }
-  //     localStorage.setItem(this.FORM_CONSTANT, JSON.stringify(this.registrationForm.value));
-  //     this.route1.navigate(['/']);
-  //   }
-  // }
+  isSuccessful = false;
+  isSignUpFailed = false;
 
-  onSubmit() {
-    if (this.registrationForm.valid) {
-      var id = new Date().getTime().toString();
-      console.log(this.registrationForm.value);
-      this.addUser(this.registrationForm.value);
-    }
-  }
+  onSubmit(): void {
+    const { name, salary, age } = this.registrationForm;
 
-  addUser(user: any) {
-    let users = [];
-    if (localStorage.getItem('Users')) {
-      users = JSON.parse(localStorage.getItem('Users')!);
-      users = [user, ...users];
-    }
-    else {
-      users = [user];
-    }
-    localStorage.setItem('Users', JSON.stringify(users));
-    this.route1.navigate(['/']);
+    this.authService.register(name, salary, age).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        this.route1.navigate(['/']);
+      },
+      error: (err: any) => {
+        this.isSignUpFailed = true;
+      }
+
+    });
   }
 
 }

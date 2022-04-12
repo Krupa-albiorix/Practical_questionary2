@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CategoryComponent } from './home/category/category.component';
 import { ContentComponent } from './home/content/content.component';
 import { CategorydetailsComponent } from './home/categorydetails/categorydetails.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 

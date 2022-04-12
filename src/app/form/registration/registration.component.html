@@ -9,7 +9,7 @@
                     
                     <mat-card appearance="fill">
                         <mat-form-field class="form-details">
-                            <mat-label>Enter Full Name</mat-label>
+                            <mat-label>Enter first Name</mat-label>
                                 <input matInput name="name" type="text" formControlName="name">
                                     <mat-error *ngIf="registrationForm.controls['name'].hasError('required')">
                                         The Name field is <strong>required</strong>...
@@ -18,6 +18,26 @@
                     </mat-card>&nbsp;
 
                     <mat-card appearance="fill">
+                        <mat-form-field class="form-details">
+                            <mat-label>Enter last Name</mat-label>
+                                <input matInput name="salary" type="text" formControlName="salary">
+                                    <mat-error *ngIf="registrationForm.controls['salary'].hasError('required')">
+                                        The Name field is <strong>required</strong>...
+                                    </mat-error>
+                        </mat-form-field>
+                    </mat-card>&nbsp;
+
+                    <mat-card appearance="fill">
+                        <mat-form-field class="form-details">
+                            <mat-label>Age</mat-label>
+                                <input matInput name="age" type="text" formControlName="age">
+                                    <mat-error *ngIf="registrationForm.controls['age'].hasError('required')">
+                                        The Name field is <strong>required</strong>...
+                                    </mat-error>
+                        </mat-form-field>
+                    </mat-card>&nbsp;
+
+                    <!-- <mat-card appearance="fill">
                         <mat-form-field class="form-details">
                             <mat-label>Date Of Birth</mat-label>
                             <input matInput [matDatepicker]="picker" formControlName="date">
@@ -73,7 +93,7 @@
                                     Please enter a strong password
                                 </mat-error>
                         </mat-form-field>
-                    </mat-card>&nbsp;
+                    </mat-card>&nbsp; -->
 
                     <div class="example-button-row">
                         <button mat-raised-button type="submit" (click)="onSubmit()">Submit</button>
