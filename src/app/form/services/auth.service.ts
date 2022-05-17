@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const AUTH_API = 'http://dummy.restapiexample.com/api/v1/create';
+const AUTH_API = 'https://reqres.in/api/users/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,11 +15,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  register(name: string, salary: string, age: number): Observable<any> {
+  register(name: string, job: string, date: Date, gender: string, email: string, password: string): Observable<any> {
     return this.http.post(AUTH_API, {
       name,
-      salary,
-      age
+      job,
+      date,
+      gender,
+      email,
+      password
     }, httpOptions);
   }
 }

@@ -22,15 +22,14 @@ export class RegistrationComponent implements OnInit {
   createRegistrationForm() {
     this.registrationForm = this.formBuilder.group({
       name: ['', Validators.required],
-      salary: ['', Validators.required],
-      age : ['', Validators.required]
-      // date: ['', Validators.required],
+      job: ['', Validators.required],
+      date: ['', Validators.required],
       // english: false,
       // hindi: false,
       // gujarati: false,
-      // gender: ['', Validators.required],
-      // email: ['', [Validators.required, Validators.email]],
-      // password: ['', [Validators.required, Validators.minLength(8)]],
+      gender: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
@@ -38,20 +37,23 @@ export class RegistrationComponent implements OnInit {
   isSignUpFailed = false;
 
   onSubmit(): void {
-    const { name, salary, age } = this.registrationForm;
+    const { name, job, date, gender, email, password } = this.registrationForm.value;
+    if (this.registrationForm.valid) {
 
-    this.authService.register(name, salary, age).subscribe({
-      next: (data: any) => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-        this.route1.navigate(['/']);
-      },
-      error: (err: any) => {
-        this.isSignUpFailed = true;
-      }
+      this.authService.register(name, job, date, gender, email, password).subscribe({
+        
+        next: (data: any) => {
+          console.log(data);
+          this.isSuccessful = true;
+          this.isSignUpFailed = false;
+          this.route1.navigate(['/']);
+        },
+        error: (err: any) => {
+          this.isSignUpFailed = true;
+        }
+      });
 
-    });
+    }
   }
 
 }

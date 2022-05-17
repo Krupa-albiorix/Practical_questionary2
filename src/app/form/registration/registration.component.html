@@ -19,25 +19,15 @@
 
                     <mat-card appearance="fill">
                         <mat-form-field class="form-details">
-                            <mat-label>Enter last Name</mat-label>
-                                <input matInput name="salary" type="text" formControlName="salary">
-                                    <mat-error *ngIf="registrationForm.controls['salary'].hasError('required')">
+                            <mat-label>Job title</mat-label>
+                                <input matInput name="job" type="text" formControlName="job">
+                                    <mat-error *ngIf="registrationForm.controls['job'].hasError('required')">
                                         The Name field is <strong>required</strong>...
                                     </mat-error>
                         </mat-form-field>
                     </mat-card>&nbsp;
 
                     <mat-card appearance="fill">
-                        <mat-form-field class="form-details">
-                            <mat-label>Age</mat-label>
-                                <input matInput name="age" type="text" formControlName="age">
-                                    <mat-error *ngIf="registrationForm.controls['age'].hasError('required')">
-                                        The Name field is <strong>required</strong>...
-                                    </mat-error>
-                        </mat-form-field>
-                    </mat-card>&nbsp;
-
-                    <!-- <mat-card appearance="fill">
                         <mat-form-field class="form-details">
                             <mat-label>Date Of Birth</mat-label>
                             <input matInput [matDatepicker]="picker" formControlName="date">
@@ -49,7 +39,7 @@
                         </mat-form-field>
                     </mat-card>&nbsp;
 
-                    <mat-card appearance="fill">
+                    <!-- <mat-card appearance="fill">
                         <section class="form-details">
                             <mat-label>Languages known</mat-label><br><br>
                             <p><mat-checkbox formControlName="english">English</mat-checkbox></p>
@@ -57,14 +47,14 @@
                             <p><mat-checkbox formControlName="gujarati">Gujarati</mat-checkbox></p>
                         </section>
                         
-                    </mat-card>&nbsp;
+                    </mat-card>&nbsp; -->
 
                     <mat-card appearance="fill">
                         <div class="form-details">
                             <mat-label>Gender</mat-label><br><br>
-                                <mat-radio-group class="gender" value="1" formControlName="gender">
-                                        <mat-radio-button value="0">Male</mat-radio-button>&nbsp;
-                                        <mat-radio-button value="1">Female</mat-radio-button>
+                                <mat-radio-group class="gender" value="Female" formControlName="gender">
+                                        <mat-radio-button value="Male">Male</mat-radio-button>&nbsp;
+                                        <mat-radio-button value="Female">Female</mat-radio-button>
                                 </mat-radio-group>
                         </div>
                     </mat-card>&nbsp;
@@ -93,7 +83,7 @@
                                     Please enter a strong password
                                 </mat-error>
                         </mat-form-field>
-                    </mat-card>&nbsp; -->
+                    </mat-card>&nbsp;
 
                     <div class="example-button-row">
                         <button mat-raised-button type="submit" (click)="onSubmit()">Submit</button>
